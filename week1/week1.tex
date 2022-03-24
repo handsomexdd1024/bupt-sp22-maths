@@ -1,0 +1,215 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsmath, amsthm, amssymb, bm, hyperref, mathrsfs}
+
+\newcounter{probid}
+\newcounter{subprobid}[probid]
+
+\author{杨濛 2021213247}
+\title{数学作业\\第一周}
+\date{\today}
+
+\newenvironment{problem}{
+    \stepcounter{probid}
+    \noindent\textbf{\arabic{probid}. }
+}{}
+\newenvironment{subproblem}{
+    \stepcounter{subprobid}
+    (\arabic{subprobid})
+}{}
+\newenvironment{solution}{
+    \noindent\textbf{解: }
+}{}
+
+\begin{document}
+\maketitle
+
+\begin{problem}
+    判断下列级数的敛散性:
+\end{problem}
+
+\begin{subproblem}
+    \(\sum\limits^\infty_{n = 1} \left(\dfrac 1 2\right)^n\)
+\end{subproblem}
+    
+\begin{solution}
+    这是一个等比级数, 其部分和为
+    \begin{equation*}
+        S(n) = \sum\limits^\infty_{n = 1} \left(\dfrac 1 2\right)^n
+        = \dfrac{1-\left(-\dfrac{1}{2}\right)^n}{1-\left(-\dfrac{1}{2}\right)}
+    \end{equation*}
+    显然\(\lim\limits_{n \to\infty} S(n) = \dfrac 2 3\), 故原级数收敛.
+\end{solution}
+
+\begin{subproblem}
+    $\sum\limits^\infty_{n = 1} \dfrac{1}{\sqrt[n]{n}}$
+\end{subproblem}
+
+\begin{solution}
+    
+    \begin{equation*}
+        \because\forall n > 1, \dfrac 1 {\sqrt[n]{n}} > \dfrac 1 n,\ 
+        \therefore \sum\limits^\infty_{n = 1} \dfrac{1}{\sqrt[n]{n}}
+            > \sum\limits^\infty_{n = 1} \dfrac{1}{n}
+    \end{equation*}
+    而调和级数是发散的,\ 所以根据比较准则,\ 原级数发散.
+\end{solution}
+
+\begin{subproblem}
+    \begin{equation*}
+        \sum\limits^\infty_{n=1} \left(\dfrac 1 n + \dfrac 1 {2^n}\right)
+    \end{equation*}
+\end{subproblem}
+
+\begin{solution}
+    \begin{equation*}
+        \sum\limits^\infty_{n=1} \left(\dfrac 1 n + \dfrac 1 {2^n}\right) 
+        = \sum\limits^\infty_{n=1} \dfrac 1 n + \sum\limits^\infty_{n=1} \dfrac 1 {2^n}
+    \end{equation*}
+    由于调和级数是发散的,\ 等比级数是收敛的,\ 故原级数发散.
+\end{solution}
+
+\begin{problem}
+    求八进制无限循环小数$\left(36.07360736\cdots\right)_8$的值.
+\end{problem}
+
+\begin{solution}
+    原数等于:
+    \begin{align*}
+        & \left(3 \times 8^3 + 6 \times 8^2 + 7 \times 8^0\right) \times
+        \sum\limits^\infty_{n=0}\dfrac 1 {8^{4n+2}}\\
+        = & (1536+384+7) \times \dfrac{1}{64}\lim\limits_{n \to \infty}
+        \cdot\dfrac{1 - \dfrac{1}{4096^n}}{1-\dfrac{1}{4096}}\\
+        = & \dfrac {123328} {4095}
+    \end{align*}
+\end{solution}
+
+\begin{problem}
+    证明:\ 级数$\sum\limits^\infty_{n=1}\left(u_{n+1}-u_n\right)$收敛的充分必要条件是
+    $\{u_n\}$收敛.
+\end{problem}
+
+\begin{solution}
+    这个级数的部分和为
+    \begin{align*}
+        S(n) = \sum\limits^\infty_{n=1}\left(u_{n+1}-u_n\right) = u_n - u_1\\
+    \end{align*}
+    故
+    \begin{align*}
+        &\lim\limits_{n \to \infty} \sum\limits^\infty_{n=1}\left(u_{n+1}-u_n\right)
+        = \lim\limits_{n \to \infty} u_n - u_1\\
+        \Rightarrow & \lim\limits_{n \to \infty} u_n 
+        = \sum\limits^\infty_{n=1}\left(u_{n+1}-u_n\right) + u_1
+    \end{align*}
+    由于$u_1 \ne \infty$, 故当$\{u_n\}$收敛时,\ 级数也收敛,\ 反之亦然.
+\end{solution}
+
+\begin{problem}
+    用比较法确定以下级数的敛散性:
+\end{problem}
+
+\begin{subproblem}
+    \(\sum\limits^\infty_{n=2} \dfrac{1}{(n-1)(n+2)}\)
+\end{subproblem}
+
+\begin{solution}
+    由于$\forall n >= 2, \dfrac{1}{(n-1)(n+2)} < \dfrac{1}{n(n-1)} 
+    < \left(\dfrac{1}{n-1} - \dfrac{1}{n}\right)$,\ 所以:
+    \begin{align*}
+        & \sum\limits^\infty_{n=2} \dfrac{1}{(n-1)(n+2)}
+        < \sum\limits^\infty_{n=2} \dfrac{1}{n(n-1)}
+        < \sum\limits^\infty_{n=2} \left(\dfrac{1}{n-1} - \dfrac{1}{n}\right)
+        = \lim\limits_{n \to \infty} 1-\dfrac 1 n = 1\\
+    \end{align*}
+    所以原级数收敛.
+\end{solution}
+
+\begin{subproblem}
+    $\sum\limits^\infty_{n=1} \tan \dfrac{\pi}{4n}$
+\end{subproblem}
+
+\begin{solution}
+    易知$\forall x \in \left( 0, 2\pi \right), \tan x > x$, 所以:
+    \begin{equation*}
+        \sum\limits^\infty_{n=1} \tan \dfrac{\pi}{4n}
+        > \sum\limits^\infty_{n=1} \dfrac{\pi}{4n}
+        > \dfrac{\pi}{4}\sum\limits^\infty_{n=1} \dfrac 1 n
+    \end{equation*}
+    由于调和级数是发散的,\ 所以根据比较准则,\ 原级数发散.
+\end{solution}
+
+\begin{subproblem} 
+    $\sum\limits^\infty_{n=1}\dfrac{1}{n\sqrt[n]{n}}$
+\end{subproblem}
+
+\begin{solution}
+    $\forall n > 2, n\sqrt[n]{n} < 2n 
+    \Rightarrow \forall n>2, \dfrac{1}{n\sqrt[n]{n}} > \dfrac{1}{2n}$, 所以:
+    \begin{equation*}
+        \sum\limits^\infty_{n=1}\dfrac{1}{n\sqrt[n]{n}} 
+        < \sum\limits^\infty_{n=1}\dfrac{1}{2n}
+    \end{equation*}
+    由于调和级数是发散的,\ 所以根据比较准则, \ 原级数发散.
+\end{solution}
+
+\begin{subproblem}
+    $\sum\limits^\infty_{n=1} 
+    \left( 2n - \sqrt{n^2+1} - \sqrt{n^2-1} \right)$
+\end{subproblem}
+
+\begin{solution}
+    这题不会,暂时跳过.
+\end{solution}
+
+\begin{problem}
+    用检比法判断以下级数的敛散性:
+\end{problem}
+
+\begin{subproblem}
+    \(\sum\limits^\infty_{n=1}\dfrac{n^2}{3^n}\)
+\end{subproblem}
+
+\begin{solution}
+    令$a_n = \dfrac{n^2}{3^n}$,\ 则
+    \[
+        \lim\limits_{n\to\infty}\dfrac{a_{n+1}}{a_n} 
+        = \lim\limits_{n\to\infty}\dfrac{(n+1)^2}{3n^2}
+        = \dfrac{1}{3}
+    \]
+    由检比法可知改级数收敛.
+    
+\end{solution}
+
+\begin{subproblem}
+    \(\sum\limits^\infty_{n=1} n\tan\dfrac{\pi}{2^{n+1}}\)
+\end{subproblem}
+
+\begin{solution}
+    令\(a_n = n\tan\dfrac{\pi}{2^{n+1}}\), 则
+    \[
+        \lim\limits_{n\to\infty}\dfrac{a_{n+1}}{a_n}
+        = \lim\limits_{n\to\infty}
+            \dfrac{(n+1)(1-\tan\dfrac{\pi}{2^{n+2}})}{2n}
+        = \dfrac 1 2 
+    \]
+    由检比法可知原级数收敛.
+\end{solution}
+
+\begin{subproblem}
+    \(
+        \sum\limits^\infty_{n=1} 
+        \dfrac{a^n}{(1+a)(1+a^2)\cdots(1+a^n)}
+        (a>0)
+    \)
+\end{subproblem}
+    
+\begin{solution}
+    令$t_n=\dfrac{a^n}{(1+a)(1+a^2)\cdots(1+a^n)}$,则
+    \[
+        \lim\limits_{n\to\infty}\dfrac{t_{n+1}}{t_n}
+        = \lim\limits_{n\to\infty}\dfrac{a}{1+a^n}
+    \]
+    当$a<1$时,上式极限为$a$;当$a\ge 1$时,上式极限为0.
+
+    由检比法可知原级数收敛.
+\end{solution}
+\end{document}
