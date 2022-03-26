@@ -1,0 +1,38 @@
+\documentclass[12pt, a4paper, oneside]{article}
+\usepackage{amsmath, amsthm, amssymb, bm, graphicx, hyperref, mathrsfs,framed}
+
+\title{\textbf{Discreate Mathematics\\Homework}}
+\author{ThomasX}
+\date{\today}
+\linespread{1.25}
+\newcounter{probid}
+\newenvironment{problem}{
+    \begin{framed}
+        \stepcounter{probid}
+        \noindent\textbf{Problem \arabic{probid}. }
+    }{\end{framed}}
+\newenvironment{solution}{\noindent\textbf{Solution. }}{}
+% \newenvironment{note}{\par\noindent\textsc{Note of Problem \arabic{probid}. }}{\\\par}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+Write problem here.
+\end{problem}
+
+\begin{solution}
+    Write solution here.
+\end{solution}
+
+
+\begin{problem}
+Write problem here.
+\end{problem}
+
+\begin{solution}
+    Write solution here.
+\end{solution}
+
+\end{document}

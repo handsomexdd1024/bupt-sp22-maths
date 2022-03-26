@@ -1,0 +1,146 @@
+\documentclass[12pt, a4paper, oneside]{article}
+\usepackage{amsmath, amsthm, amssymb, bm, ctex}
+\usepackage[indent=0pt]{parskip}
+
+\newcounter{probid}
+\newcounter{subprobid}[probid]
+
+\author{杨濛 2021213247}
+\title{数学作业\\第二周}
+\date{\today}
+
+\newenvironment{problem}{
+    \stepcounter{probid}
+    \noindent\textbf{\arabic{probid}. }
+}{\par}
+\newenvironment{subproblem}{
+    \stepcounter{subprobid}
+    (\arabic{subprobid})
+}{\par}
+\newenvironment{solution}{
+    \noindent\textbf{解: }
+}{\par}
+
+\begin{document}
+    \maketitle
+    \begin{problem}
+        用检根法确定下列级数的收敛性：
+    \end{problem}
+    \begin{subproblem}
+        $\sum\limits_{n=1}^\infty \dfrac{n}{2^n}$
+    \end{subproblem}
+    \begin{solution}
+        \[\lim\limits_{n\to\infty} \sqrt[n]{\dfrac{2}{2^n}}
+        = \dfrac{1}{2}\lim\limits_{n\to\infty}\sqrt[n]{n} = \dfrac{1}{2}<1\]
+        所以原级数收敛.
+    \end{solution}
+    \begin{subproblem}
+        \(\sum\limits_{n=1}^\infty\left( \dfrac{n}{3n-1} \right)^{2n-1}\)
+    \end{subproblem}
+    \begin{solution}
+        \[\lim\limits_{n\to\infty}
+        \sqrt[n]{\left( \dfrac{n}{3n-1} \right)^{2n-1}}
+        = \lim\limits_{n\to\infty}
+        \left( \dfrac{n}{3n-1} \right)^{\frac{2n-1}{n}}
+        = \dfrac{1}{9}<1\]
+        所以原级数收敛.
+    \end{solution}
+    \begin{problem}
+        利用级数收敛的必要条件,证明:\(\lim\limits_{n\to\infty}
+        \dfrac{n^n}{(n!)^2}= 0\)
+    \end{problem}
+    \begin{solution}
+        令\(a_n = \dfrac{n^n}{(n!)^2}\),则
+        \begin{align*}
+            \lim\limits_{n\to\infty}\dfrac{a_{n+1}}{a_n}
+            & = \lim\limits_{n\to\infty}
+            \dfrac{\left(n+1\right)^{n+1}}
+            {\left[\left(n+1\right)!\right]^2}
+            \cdot \dfrac{\left(n!\right)^2}{n^n}\\
+            & = \lim\limits_{n\to\infty}
+            \dfrac{\left(n+1\right)^{n-1}}{n^n}\\
+            & = \lim\limits_{n\to\infty}
+            \dfrac{\left(1+\frac{1}{n}\right)^{n-1}}{n}\\
+            & = 0
+        \end{align*}
+        根据检比法,级数\(\sum\limits_{n=1}^\infty a_n\)收敛.
+
+        根据级数收敛的必要条件, \(\lim\limits_{n\to\infty}
+        \dfrac{n^n}{(n!)^2}= 0\).
+    \end{solution}
+    \begin{problem}
+        设正项级数\(\sum\limits_{n=1}^\infty u_n\)收敛,证明:当$p>\dfrac{1}{2}$时,
+        级数$\sum\limits_{n=1}^\infty \dfrac{\sqrt{u_n}}{n^p}$收敛.
+    \end{problem}
+    \begin{solution}
+        由于$p>\dfrac{1}{2}$,故对于所有$u_n$,有
+        \[\sum\limits_{n=1}^\infty\dfrac{u_n}{n^{2p}}
+        < \sum\limits_{n=1}^\infty u_n\]
+        由比较审敛法可知级数\(\sum\limits_{n=1}^\infty \dfrac{u_n}{n^{2p}}\)收敛.
+
+        考虑级数$\sum\limits_{n=1}^\infty \dfrac{\sqrt{u_n}}{n^p}$的部分和$S(n)$,有
+        \begin{align*}
+            S(n) & = \sum\limits_{k=1}^n \dfrac{\sqrt{u_n}}{n^p} \\
+            & = \sum\limits_{k=1}^n \sqrt{\dfrac{u_n}{n^{2p}}} \\
+            & < \sqrt{\dfrac{\sum\limits_{k=1}^n \dfrac{u_n}{n^{2p}}}{n}}
+        \end{align*}
+    \end{solution}
+    \begin{problem}
+        判定以下级数是否收敛。如果收敛，请判断是绝对收敛还是条件收敛。
+    \end{problem}
+    \begin{subproblem}
+        \(\sum\limits_{n=1}^\infty
+        \left(-1\right)^{n-1}\dfrac{\left(2n\right)!!}{\left(2n-1\right)!!}\)
+    \end{subproblem}
+    \begin{solution}
+        令\(u_n = \dfrac{\left(2n\right)!!}{\left(2n-1\right)!!}\),
+        则\(\lim\limits_{n\to\infty} u_n > \dfrac{2}{1} = 2 \ne 0\),所以该级数发散.
+    \end{solution}
+    \begin{subproblem}
+        \(\sum\limits_{n=1}^\infty \dfrac{\left(-1\right)^{n-1}}
+        {\ln\left(n+1\right)}\)
+    \end{subproblem}
+    \begin{solution}
+        由于\(\ln x\)在$x\in \mathbf{R}$上单调递增,所以\(\dfrac{1}{\ln x}\)
+        在$x \in \mathbf{R}$上单调递减. 根据柯西判别法,原交错级数收敛.
+
+        由\(\ln x < x\)得
+        \[\sum\limits_{n=1}^\infty \dfrac{1}{\ln n}
+        > \sum\limits_{n=1}^\infty \dfrac{1}{n}\]
+        由调和级数发散以及比较准则,原级数绝对发散.
+        
+        综上,原级数条件收敛.
+    \end{solution}
+    \begin{subproblem}
+        \(\sum\limits_{n=1}^\infty\dfrac{n!\times 2^n}{n^n}\sin\dfrac{n\pi}{3}\)
+    \end{subproblem}
+    \begin{solution}
+        显然\(\dfrac{n!\times 2^n}{n^n}\sin\dfrac{n\pi}{3}
+        < \dfrac{n!\times 2^n}{n^n}\).
+
+        令\(u_n = \dfrac{n!\times 2^n}{n^n}\), 则
+        \[\lim\limits_{n\to\infty} \dfrac{u_{n+1}}{u_n}
+        = \lim\limits_{n\to\infty} \dfrac{2n^n}{(n+1)^n}
+        = \dfrac{2}{\rm{e}} < 1\]
+        故根据检比法,原级数绝对收敛.
+    \end{solution}
+    \begin{problem}
+        设级数\(\sum\limits_{n=2}^\infty\left(u_n-u_{n-1}\right)\)收敛,
+        正项级数\(\sum\limits_{n=1}^\infty v_n\)收敛,试证明
+        级数\(\sum\limits_{n=1}^\infty u_n v_n\)绝对收敛.
+    \end{problem}
+    \begin{solution}
+        由\(\sum\limits_{n=2}^\infty\left(u_n-u_{n-1}\right)\)收敛可知
+        其部分和的极限
+        \[\lim\limits_{n\to\infty}S(n)
+        = \lim\limits_{n\to\infty}u_n-u_1= 0
+        \Rightarrow \lim\limits_{n\to\infty} u_n = u_1\]
+        此时根据数列极限的有界性:
+        \[\forall n \in \mathbf{Z}_+, \exists M \in R+, 
+        \left|u_n\right| < M\]
+        因此
+        \[\sum\limits_{n=1}^\infty \left|u_n v_n\right|
+        < M\sum\limits_{n=1}^\infty \left|v_n\right|\]
+        由比较准则可知原级数绝对收敛.
+    \end{solution}
+\end{document}
