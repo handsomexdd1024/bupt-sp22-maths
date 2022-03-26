@@ -187,7 +187,14 @@
     \left( 2n - \sqrt{n^2+1} - \sqrt{n^2-1} \right)$
 \end{subproblem}
 \begin{solution}
-    这题不会,暂时跳过.
+    注意到\(\forall n>=1, \sqrt{n^2-1} < n\), 故
+    \begin{align*}
+        2n - \sqrt{n^2+1} - \sqrt{n^2-1} & > n - \sqrt{n^2-1} 
+        = \dfrac{1}{n+\sqrt{n^2+1}} > \dfrac{1}{2n}
+    \end{align*}
+    所以\(\sum\limits_{n=1}^\infty \left(2n - \sqrt{n^2+1} - \sqrt{n^2-1}\right)
+    > \sum\limits_{n=1}^\infty \dfrac{1}{2n}\).
+    由于调和级数是发散的, 所以根据比较准则, 原级数发散.
 \end{solution}
 \begin{problem}
     用检比法判断以下级数的敛散性:
