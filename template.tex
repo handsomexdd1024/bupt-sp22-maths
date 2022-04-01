@@ -1,0 +1,22 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsmath, amsthm, amssymb, bm}
+\usepackage[indent=0pt]{parskip}
+
+\newcounter{probid}
+\newcounter{subprobid}[probid]
+
+\author{杨濛 2021213247}
+\title{数学作业\\第一周}
+\date{\today}
+
+\newenvironment{problem}{
+    \stepcounter{probid}
+    \noindent\textbf{\arabic{probid}. }
+}{\par}
+\newenvironment{subproblem}{
+    \stepcounter{subprobid}
+    (\arabic{subprobid})
+}{\par}
+\newenvironment{solution}{
+    \noindent\textbf{解: }
+}{\par}
